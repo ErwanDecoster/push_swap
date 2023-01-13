@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:31:53 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/12 14:23:12 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/01/13 15:12:59 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,95 @@
 
 int	main(int argc, char **argv)
 {
-	int		i;
 	t_data	data;
 
-	if (argc < 2)
-		return (0);
-	i = 0;
+	check_args(argc, **argv);
+	check_duplicate(argc, **argv);
+	check_sort(argc, **argv);
+	init_stack_a(data);
+	go_algo(data);
+
+
+
+	
+	
 	data.value_count = count_total_arg(argc, argv);
-	data.stack_a = ft_calloc(data.value_count, sizeof(int));
+	ft_printf("(%d)", data.value_count);
+	// data.stack_a = ft_calloc(data.value_count, sizeof(int));
 	if (!data.stack_a)
 		error(&data);
-	data.stack_a = arg_to_stack(&data, argc, argv);
-	data.stack_b = ft_calloc(data.value_count, sizeof(int));
-	if (!data.stack_b)
-		error(&data);
+	arg_to_stack(&data, argc, argv);
+	// data.stack_b = ft_calloc(data.value_count, sizeof(int));
+	// if (!data.stack_b)
+		// error(&data);
 	check_double(data);
-	if(is_ordered(data, data.stack_a))
+	if(is_sorted(data, data.stack_a))
 		stop(&data);
 	show_stack(data.stack_a, data.value_count);
-	ft_printf("(%d)", data.size_a);
+	stop(&data);
 }
 
-int	*arg_to_stack(t_data *data, int argc, char **argv)
+int	check_args(int argc, char **argv)
+{
+	int	i;
+
+	i = 0;
+	if (argc < 2)
+		return (stop());
+	while (++i < argc)
+	{
+		if (!is_valide(argv[i]))
+			return (stop());
+	}
+	return (1);
+}
+
+int	check_duplicate(int argc, char **argv)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (++i < argc)
+	{
+		j = i;
+		while (++j < argc)
+			if (argv[i] == argv[j])
+				return (stop());
+	}
+	return (1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+void	*arg_to_stack(t_data *data, int argc, char **argv)
 {
 	int		i;
 	int		j;
-	int		k;
-	char	**splited;
 
 	i = 0;
-	k = 0;
+	j = 0;
 	while (++i < argc)
 	{
-		j = 0;
-		splited = ft_split(argv[i], ' ');
-		while (j++ < count_word(argv[i], ' '))
-			if (is_valid(splited[j - 1], data))
-				data->stack_a[k++] = ft_atoi(splited[j - 1]);
+		if (is_valid(argv[i], data))
+		{
+			t_stack *newElement;
+
+			newElement = ft_stack_new(ft_atoi(argv[i]));
+			stack_add_front(data->stack_a, newElement);
+			// data->stack_a[j++] = ft_atoi(argv[i]);
+		}
 	}
-	data->size_a = k;
-	return (data->stack_a);
+	data->size_a = j;
+// 	return (data->stack_a);
 }
+

@@ -1,38 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close.c                                            :+:      :+:    :+:   */
+/*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/12 13:24:40 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/13 15:04:56 by edecoste         ###   ########.fr       */
+/*   Created: 2023/01/13 14:25:49 by edecoste          #+#    #+#             */
+/*   Updated: 2023/01/13 14:26:59 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_all(t_data *data)
+t_stack	*ft_stack_new(int content)
 {
-	free(data->stack_a);
-	free(data->stack_b);
+	t_stack	*nlist;
+
+	nlist = malloc(sizeof(t_stack));
+	if (!nlist)
+		return (0);
+	nlist->content = content;
+	nlist->next = 0;
+	return (nlist);
 }
 
-int	error(t_data *data)
+void	stack_add_front(t_stack **lst, t_stack *new)
 {
-	free_all(data);
-	ft_printf("Error\n");
-	exit(0);
-	return (0);
+	if (!lst)
+		return ;
+	new->next = *lst;
+	*lst = new;
 }
 
-int	close(t_data *data)
+void	stack_iter(t_stack *lst, void (*f)(void *))
 {
-	free_all(data);
-	exit(0);
-}
-
-int	stop()
-{
-	exit(0);
+	if (!f)
+		return ;
+	while (lst)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
+	lst = 0;
 }

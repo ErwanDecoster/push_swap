@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:31:35 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/12 14:21:48 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/01/13 15:08:54 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,20 +43,20 @@ int	check_double(t_data data)
 	{
 		j = i;
 		while (++j < data.value_count)
-			if (data.stack_a[i] == data.stack_a[j])
+			if (data.stack_a[i].content == data.stack_a[j].content)
 				return (error(&data));
 	}
 	return (1);
 }
 
-int	is_ordered(t_data data, int *stack)
+int	is_sorted(t_data data, t_stack **stack)
 {
 	int	i;
 
 	i = 0;
 	while (i < data.value_count - 1)
 	{
-		if (stack[i] < stack[i + 1])
+		if (stack[i].content < stack[i + 1].content)
 			i++;
 		else
 			return (0);
@@ -64,15 +64,19 @@ int	is_ordered(t_data data, int *stack)
 	return (1);
 }
 
-int	is_valid(char *arg, t_data *data)
+int	is_valid(char *arg)
 {
-	size_t	i;
+	int	i;
 
 	i = -1;
 	if (ft_strlen(arg) == 0)
-		return (error(data));
+		return (1);
 	while (arg[++i])
-		if (!ft_isdigit(arg[i]))
-			return (error(data));
-	return (1);
+	{
+		if (arg[i] == '-' && !ft_isdigit(arg[i + 1]))
+			return (1);
+		if (!ft_isdigit(arg[i]) && arg[i] != '-')
+			return (1);
+	}
+	return (0);
 }
