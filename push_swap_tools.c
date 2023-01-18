@@ -6,61 +6,56 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:31:35 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/13 15:08:54 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:18:24 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	show_stack(int *stack, size_t len)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < len)
-		ft_printf("%d\n", stack[i++]);
-}
-
-int	count_total_arg(int argc, char **argv)
+int	check_args(int argc, char **argv)
 {
 	int	i;
-	int	rt;
 
 	i = 0;
-	rt = 0;
+	// if (argc < 2)
+	// 	return (error());
 	while (++i < argc)
-		rt += count_word(argv[i], ' ');
-	return (rt);
+		if (!is_valid(argv[i]))
+			return (error());
+	return (1);
 }
 
-int	check_double(t_data data)
+int	check_duplicate(int argc, char **argv)
 {
 	int	i;
 	int	j;
 
-	i = -1;
-	while (++i < data.value_count)
+	i = 0;
+	while (++i < argc)
 	{
 		j = i;
-		while (++j < data.value_count)
-			if (data.stack_a[i].content == data.stack_a[j].content)
-				return (error(&data));
+		while (++j < argc)
+			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
+				return (error());
 	}
 	return (1);
 }
 
-int	is_sorted(t_data data, t_stack **stack)
+int	check_sort(int argc, char **argv)
 {
 	int	i;
-
+	
 	i = 0;
-	while (i < data.value_count - 1)
-	{
-		if (stack[i].content < stack[i + 1].content)
-			i++;
-		else
-			return (0);
-	}
+	while (++i < argc - 1)
+		if (ft_atoi(argv[i]) > ft_atoi(argv[i + 1]))
+			return (1);
+	return (stop());
+}
+
+int	check_max_min(char *str)
+{
+	if (ft_atoi_long(str) > 2147483647 || ft_atoi_long(str) < -2147483648)
+		return (0);
 	return (1);
 }
 
@@ -70,13 +65,15 @@ int	is_valid(char *arg)
 
 	i = -1;
 	if (ft_strlen(arg) == 0)
-		return (1);
+		return (0);
+	if (!check_max_min(arg))
+		return (0);
 	while (arg[++i])
 	{
 		if (arg[i] == '-' && !ft_isdigit(arg[i + 1]))
-			return (1);
+			return (0);
 		if (!ft_isdigit(arg[i]) && arg[i] != '-')
-			return (1);
+			return (0);
 	}
-	return (0);
+	return (1);
 }

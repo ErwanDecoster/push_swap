@@ -6,11 +6,12 @@
 #    By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/09 13:51:30 by edecoste          #+#    #+#              #
-#    Updated: 2023/01/06 16:55:04 by edecoste         ###   ########.fr        #
+#    Updated: 2023/01/18 11:58:25 by edecoste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS		=	ft_atoi.c \
+				ft_atoi_long.c \
 				ft_bzero.c \
 				ft_calloc.c \
 				ft_isalnum.c \

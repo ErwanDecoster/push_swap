@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:24:40 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/13 15:04:56 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/01/17 13:20:34 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,16 @@ void	free_all(t_data *data)
 	free(data->stack_b);
 }
 
-int	error(t_data *data)
+int	error()
 {
-	free_all(data);
 	ft_printf("Error\n");
-	exit(0);
+	close_prog();
 	return (0);
 }
 
-int	close(t_data *data)
+int	close_prog()
 {
-	free_all(data);
+	// free_all(data);
 	exit(0);
 }
 

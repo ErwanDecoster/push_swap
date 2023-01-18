@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:25:49 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/13 14:26:59 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/01/18 14:02:02 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,32 @@ void	stack_add_front(t_stack **lst, t_stack *new)
 	*lst = new;
 }
 
-void	stack_iter(t_stack *lst, void (*f)(void *))
+void	stack_add_back(t_stack **lst, t_stack *new)
 {
-	if (!f)
-		return ;
-	while (lst)
+	t_stack	*elem;
+
+	elem = *lst;
+	if (!*lst)
 	{
-		f(lst->content);
-		lst = lst->next;
+		*lst = new;
+		return ;
 	}
-	lst = 0;
+	while (elem->next)
+		elem = elem->next;
+	elem->next = new;
+}
+
+void	stack_show(t_stack *lst)
+{
+	int		i;
+	t_stack	*elem;
+
+	i = 0;
+	elem = lst;
+	while (elem != NULL)
+	{
+		ft_printf("%d, ", elem->content);
+		elem = elem->next;
+		i++;
+	}
 }

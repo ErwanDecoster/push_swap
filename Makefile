@@ -6,16 +6,17 @@
 #    By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/09 13:51:30 by edecoste          #+#    #+#              #
-#    Updated: 2023/01/12 13:28:59 by edecoste         ###   ########.fr        #
+#    Updated: 2023/01/18 16:11:48 by edecoste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		=	push_swap_move.c \
+SRCS		=	push_swap_move_0.c \
+				push_swap_move_1.c \
 				push_swap_move_2.c \
-				push_swap_move_3.c \
 				push_swap_tools.c \
 				push_swap.c \
 				close.c \
+				stack.c \
 
 HEADERS		= push_swap.h
 
