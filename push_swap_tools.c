@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:31:35 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/18 13:18:24 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/01/20 16:46:58 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	check_args(int argc, char **argv)
 	int	i;
 
 	i = 0;
-	// if (argc < 2)
-	// 	return (error());
+// if (argc < 2)
+// 	return (error());
 	while (++i < argc)
 		if (!is_valid(argv[i]))
 			return (error());
@@ -44,7 +44,7 @@ int	check_duplicate(int argc, char **argv)
 int	check_sort(int argc, char **argv)
 {
 	int	i;
-	
+
 	i = 0;
 	while (++i < argc - 1)
 		if (ft_atoi(argv[i]) > ft_atoi(argv[i + 1]))

@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 17:25:04 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/18 11:58:58 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/01/20 16:49:12 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int			count_word(char const *s, char c);
 
-int			ft_printf(const char *str, ...)__attribute__((format(printf, 1, 2)));
+int			ft_printf(const char *s, ...)__attribute__((format(printf, 1, 2)));
 int			ft_putchar_fd(int c, int fd);
 int			ft_putnbr_b_fd(unsigned long int nbr, char *base, int fd);
 int			ft_putnbr_fd(int n, int fd);

@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 13:09:33 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/06 15:37:44 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/01/20 16:49:53 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,30 +41,30 @@ static int	redirect(const char c, va_list vl, int fd)
 	return (rt);
 }
 
-int	ft_printf(const char *str, ...)
+int	ft_printf(const char *s, ...)
 {
 	va_list	vl;
 	int		rt_val;
 	int		i;
 	int		tmp;
 
-	va_start(vl, str);
+	va_start(vl, s);
 	i = -1;
 	tmp = 0;
 	rt_val = 0;
 	if (write(1, 0, 0) != 0)
 		return (-1);
-	while (str[++i])
+	while (s[++i])
 	{
-		if (str[i] == '%' && str[i + 1])
+		if (s[i] == '%' && s[i + 1])
 		{
-			tmp = redirect(str[++i], vl, 1);
+			tmp = redirect(s[++i], vl, 1);
 			if (tmp == -1)
 				return (-1);
 			rt_val += tmp;
 		}
-		else if (str[i] != '%')
-			rt_val += ft_putchar_fd(str[i], 1);
+		else if (s[i] != '%')
+			rt_val += ft_putchar_fd(s[i], 1);
 	}
 	va_end(vl);
 	return (rt_val);
