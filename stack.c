@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:25:49 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/20 16:47:40 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/01/21 16:24:51 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	init_stack_a(t_data	*data, int argc, char **argv)
 	int		i;
 	t_stack	*new;
 	i = 0;
+	
 	while (++i < argc)
 	{
 		new = ft_stack_new(ft_atoi(argv[i]));

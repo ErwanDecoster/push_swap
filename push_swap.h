@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:13:09 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/20 16:43:10 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/01/21 18:10:55 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ typedef struct s_data
 }	t_data;
 
 int		go_algo(t_data *data);
+int 	sort_three(t_data *data);
+int		find_min_position(t_stack *stack);
+int		sort_five(t_data *data);
 
 // --------------------------------------------------------- push_swap_move_0 --
 
