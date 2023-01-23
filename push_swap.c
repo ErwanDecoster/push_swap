@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:31:53 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/21 18:24:56 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/01/23 18:27:39 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,65 +40,76 @@ int	main(int argc, char **argv)
 
 int	go_algo(t_data *data)
 {
-	// stack_show(data->stack_a);
-	if (data->size_a == 3)
+	if (data->size_a == 2)
+		move_sa(data);
+	else if (data->size_a == 3)
 		sort_three(data);
-	if (data->size_a == 5)
+	else if (data->size_a == 4)
+		sort_four(data);
+	else if (data->size_a == 5)
 		sort_five(data);
-	// stack_show(data->stack_a);
+	else
+	{
+		index_stack(data);
+		sort_max(data);
+	}
+	stack_show(data->stack_a);
+	stack_show(data->stack_b);
 	return (0);
 }
 
-int sort_three(t_data *data)
+int	sort_max(t_data *data)
 {
-	int	first;
-	int	second;
-	int	third;
-
-	first = data->stack_a->content;
-	second = data->stack_a->next->content;
-	third = data->stack_a->next->next->content;
-	if (first > second && second > third && third < first)
-		return (move_sa(data), move_rra(data), 0);
-	else if (first > second && second < third && third > first)
-		return (move_sa(data), 0);
-	else if (first < second && second > third && third < first)
-		return (move_rra(data), 0);
-	else if (first < second && second > third && third > first)
-		return (move_rra(data), move_sa(data), 0);
-	else if (first > second && second < third && third < first)
-		return (move_ra(data), 0);
-	return (1);
-}
-
-int sort_five(t_data *data)
-{
-	ft_printf("value index {%d}", find_min_position(data->stack_a));
+	(void)data;
+	ft_printf("pas fini\n");
+	twenty_percent_mini(data);
 	return (0);
 }
 
-int	find_min_position(t_stack *stack)
+int	index_stack(t_data *data)
+{
+	t_stack *elem;
+	t_stack *elem2;
+
+	elem = data->stack_a;
+	while (elem)
+	{
+		elem2 = data->stack_a;
+		elem->index = 0;
+		while (elem2)
+		{
+			if (elem2->content < elem->content)
+				elem->index++;
+			elem2 = elem2->next;
+		}
+		elem = elem->next;
+	}
+	ft_printf("index end\n");
+	return (0);
+}
+
+int	twenty_percent_mini(t_data *data)
 {
 	int	i;
-	int	min_val;
-	t_stack	*elem;
+	int	len;
+	int	moyen;
 
 	i = 0;
-	elem = stack;
-	min_val = elem->content;
-	while (elem->next != NULL)
+	len = data->size_a;
+	moyen = (find_min_val(data->stack_a) + find_max_val(data->stack_a)) / 2;
+	while (i < len)
 	{
-		if (elem->next->content < min_val)
-			min_val = elem->next->content;
-		elem = elem->next;
-	}
-	elem = stack;
-	while (elem != NULL)
-	{
-		if (elem->content == min_val)
-			break ;
-		elem = elem->next;
+		if (data->stack_a->content < moyen)
+		{
+			move_pb(data);
+		}
+		else
+		{
+			move_pb(data);
+			move_rb(data);
+		}
+		// move_i_to_b(data, find_min_position(data->stack_a), data->size_a);
 		i++;
 	}
-	return (i);
+	return (0);
 }

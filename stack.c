@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:25:49 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/21 16:24:51 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/01/23 18:18:32 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	stack_show(t_stack *lst)
 	ft_printf("(");
 	while (elem != NULL)
 	{
-		ft_printf("%d, ", elem->content);
+		ft_printf("{%d : %d}", elem->index, elem->content);
 		elem = elem->next;
 		i++;
 	}

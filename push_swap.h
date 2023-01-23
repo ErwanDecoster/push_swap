@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:13:09 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/21 18:10:55 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/01/23 18:16:37 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 typedef struct s_stack
 {
 	int				content;
+	int				index;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -33,9 +34,12 @@ typedef struct s_data
 }	t_data;
 
 int		go_algo(t_data *data);
-int 	sort_three(t_data *data);
-int		find_min_position(t_stack *stack);
-int		sort_five(t_data *data);
+int		sort_max(t_data *data);
+int		find_min_val(t_stack *stack);
+int		find_max_val(t_stack *stack);
+int		twenty_percent_mini(t_data *data);
+int		rt_last(t_stack *stack);
+int		index_stack(t_data *data);
 
 // --------------------------------------------------------- push_swap_move_0 --
 
@@ -78,5 +82,13 @@ t_stack	*ft_stack_new(int content);
 void	stack_add_back(t_stack **lst, t_stack *new);
 void	stack_show(t_stack *lst);
 int		init_stack_a(t_data	*data, int argc, char **argv);
+
+// --------------------------------------------------------------- sort_3_4_5 --
+
+int		sort_three(t_data *data);
+int		sort_four(t_data *data);
+int		sort_five(t_data *data);
+int		find_min_position(t_stack *stack);
+int		move_i_to_b(t_data *data, int i, int len);
 
 #endif
