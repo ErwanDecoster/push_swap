@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:13:09 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/23 18:16:37 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/01/25 16:40:37 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,16 @@ typedef struct s_data
 	int		size_b;
 }	t_data;
 
+// ---------------------------------------------------------------- push_swap --
+
 int		go_algo(t_data *data);
-int		sort_max(t_data *data);
 int		find_min_val(t_stack *stack);
 int		find_max_val(t_stack *stack);
-int		twenty_percent_mini(t_data *data);
-int		rt_last(t_stack *stack);
+int		split_to_b(t_data *data, int len, int max_index, int min_index);
 int		index_stack(t_data *data);
+int		sort_b(t_data *data, int len);
+
+int		find_i_position(t_stack *stack, int index);
 
 // --------------------------------------------------------- push_swap_move_0 --
 
@@ -69,6 +72,14 @@ int		check_sort(int argc, char **argv);
 int		check_max_min(char *str);
 int		is_valid(char *arg);
 
+// -------------------------------------------------------- push_swap_tools_2 --
+
+int		find_min_val(t_stack *stack);
+int		find_max_val(t_stack *stack);
+int		find_min_position(t_stack *stack);
+int		find_max_position(t_stack *stack);
+int		find_i_position(t_stack *stack, int index);
+
 // -------------------------------------------------------------------- close --
 
 void	free_all(t_data *data);
@@ -83,12 +94,12 @@ void	stack_add_back(t_stack **lst, t_stack *new);
 void	stack_show(t_stack *lst);
 int		init_stack_a(t_data	*data, int argc, char **argv);
 
-// --------------------------------------------------------------- sort_3_4_5 --
+// ----------------------------------------------------------- sort_3_4_5_max --
 
 int		sort_three(t_data *data);
+int		move_i_to_b(t_data *data, int i, int len);
 int		sort_four(t_data *data);
 int		sort_five(t_data *data);
-int		find_min_position(t_stack *stack);
-int		move_i_to_b(t_data *data, int i, int len);
+int		sort_max(t_data *data);
 
 #endif
