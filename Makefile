@@ -6,22 +6,23 @@
 #    By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/09 13:51:30 by edecoste          #+#    #+#              #
-#    Updated: 2023/01/26 15:05:17 by edecoste         ###   ########.fr        #
+#    Updated: 2023/01/26 16:31:13 by edecoste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS		=	push_swap_move_0.c \
 				push_swap_move_1.c \
-				push_swap_move_2.c \
-				push_swap_tools.c \
+				push_swap_tools_0.c \
+				push_swap_tools_1.c \
 				push_swap_tools_2.c \
-				push_swap_tools_3.c \
 				push_swap.c \
 				close.c \
 				stack.c \
 				sort_3_4_5_max.c \
 
 HEADERS		= push_swap.h
+
+LIBFT		= Libft/libft.a
 
 OBJS		= ${SRCS:.c=.o}
 
@@ -33,15 +34,15 @@ CC			= cc
 
 RM			= rm -f
 
-%.o: 		%.c ${HEADERS}
-			${CC} ${FLAGS} -c $< -o $@ -I ${HEADERS}
+%.o: 		%.c ${HEADERS} ${LIBFT}
+			${CC} ${FLAGS} -c $<
 
-${NAME}:	${OBJS} Libft/libft.a
-			${CC} ${FLAGS} -o ${NAME} ${OBJS} Libft/libft.a
+${NAME}:	${OBJS}
+			${CC} ${FLAGS} ${OBJS} ${LIBFT} -o ${NAME} 
 
-all:		makelib ${NAME}
+all:		${LIBFT} ${NAME}
 
-makelib:
+${LIBFT}:
 			make -C ./Libft/
 
 clean:
