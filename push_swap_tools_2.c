@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:31:35 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/25 16:29:17 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/01/26 11:23:09 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	find_min_val(t_stack *stack)
 {
-	int	min_val;
+	int		min_val;
 	t_stack	*elem;
 
 	elem = stack;
@@ -30,7 +30,7 @@ int	find_min_val(t_stack *stack)
 
 int	find_max_val(t_stack *stack)
 {
-	int	max_val;
+	int		max_val;
 	t_stack	*elem;
 
 	elem = stack;
@@ -46,8 +46,8 @@ int	find_max_val(t_stack *stack)
 
 int	find_min_position(t_stack *stack)
 {
-	int	i;
-	int	min_val;
+	int		i;
+	int		min_val;
 	t_stack	*elem;
 
 	i = 0;
@@ -65,8 +65,8 @@ int	find_min_position(t_stack *stack)
 
 int	find_max_position(t_stack *stack)
 {
-	int	i;
-	int	max_val;
+	int		i;
+	int		max_val;
 	t_stack	*elem;
 
 	i = 0;
@@ -84,7 +84,7 @@ int	find_max_position(t_stack *stack)
 
 int	find_i_position(t_stack *stack, int index)
 {
-	int	i;
+	int		i;
 	t_stack	*elem;
 
 	i = 0;

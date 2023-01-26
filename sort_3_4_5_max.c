@@ -6,13 +6,13 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:41:28 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/25 18:52:07 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/01/26 11:17:45 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int sort_three(t_data *data)
+int	sort_three(t_data *data)
 {
 	int	first;
 	int	second;
@@ -44,7 +44,7 @@ int	move_i_to_b(t_data *data, int i, int len)
 	return (0);
 }
 
-int sort_four(t_data *data)
+int	sort_four(t_data *data)
 {
 	move_i_to_b(data, find_min_position(data->stack_a), 5);
 	sort_three(data);
@@ -52,7 +52,7 @@ int sort_four(t_data *data)
 	return (0);
 }
 
-int sort_five(t_data *data)
+int	sort_five(t_data *data)
 {
 	move_i_to_b(data, find_min_position(data->stack_a), 5);
 	move_i_to_b(data, find_min_position(data->stack_a), 4);
@@ -69,14 +69,18 @@ int	sort_max(t_data *data)
 	int	chunck;
 	int	sup;
 
-	nb_chunck = 9;
-	i  = nb_chunck;
-	chunck  = data->size_a / nb_chunck;
+	nb_chunck = data->size_a / 90 + 1;
+	if (data->size_a > 400)
+		nb_chunck = data->size_a / 90 + 1;
+	i = nb_chunck;
+	chunck = data->size_a / nb_chunck;
 	sup = data->size_a - (data->size_a / nb_chunck * nb_chunck);
 	while (i > 0)
 	{
 		split_to_b(data, chunck + sup, chunck * i + sup, chunck * i - chunck);
 		sort_b(data, data->size_b);
+		if (i > 1)
+			prepare_a(data, chunck + sup);
 		if (sup > 0)
 			sup = 0;
 		i--;

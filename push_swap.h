@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:13:09 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/25 16:40:37 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/01/26 11:23:37 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ typedef struct s_stack
 
 typedef struct s_data
 {
-	int		value_count;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 	int		size_a;
@@ -36,19 +35,12 @@ typedef struct s_data
 // ---------------------------------------------------------------- push_swap --
 
 int		go_algo(t_data *data);
-int		find_min_val(t_stack *stack);
-int		find_max_val(t_stack *stack);
-int		split_to_b(t_data *data, int len, int max_index, int min_index);
-int		index_stack(t_data *data);
-int		sort_b(t_data *data, int len);
-
-int		find_i_position(t_stack *stack, int index);
 
 // --------------------------------------------------------- push_swap_move_0 --
 
 void	move_sa(t_data *data);
-void	move_sb(t_data *data);
-void	move_ss(t_data *data);
+void	move_sb(t_data *data);//inused
+void	move_ss(t_data *data);//inused
 
 // --------------------------------------------------------- push_swap_move_1 --
 
@@ -56,13 +48,13 @@ void	move_pa(t_data *data);
 void	move_pb(t_data *data);
 void	move_ra(t_data *data);
 void	move_rb(t_data *data);
-void	move_rr(t_data *data);
+void	move_rr(t_data *data);//inused
 
 // --------------------------------------------------------- push_swap_move_2 --
 
 void	move_rra(t_data *data);
 void	move_rrb(t_data *data);
-void	move_rrr(t_data *data);
+void	move_rrr(t_data *data);//inused
 
 // ---------------------------------------------------------- push_swap_tools --
 
@@ -78,7 +70,14 @@ int		find_min_val(t_stack *stack);
 int		find_max_val(t_stack *stack);
 int		find_min_position(t_stack *stack);
 int		find_max_position(t_stack *stack);
-int		find_i_position(t_stack *stack, int index);
+int		find_i_position(t_stack *stack, int index);//inused
+
+// -------------------------------------------------------- push_swap_tools_3 --
+
+int		index_stack(t_data *data);
+int		split_to_b(t_data *data, int len, int max_i, int min_i);
+int		prepare_a(t_data *data, int len);
+int		sort_b(t_data *data, int len);
 
 // -------------------------------------------------------------------- close --
 
@@ -91,7 +90,7 @@ int		stop(void);
 
 t_stack	*ft_stack_new(int content);
 void	stack_add_back(t_stack **lst, t_stack *new);
-void	stack_show(t_stack *lst);
+void	stack_show(t_stack *lst);//inused
 int		init_stack_a(t_data	*data, int argc, char **argv);
 
 // ----------------------------------------------------------- sort_3_4_5_max --

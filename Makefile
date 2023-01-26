@@ -6,7 +6,7 @@
 #    By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/09 13:51:30 by edecoste          #+#    #+#              #
-#    Updated: 2023/01/25 16:40:06 by edecoste         ###   ########.fr        #
+#    Updated: 2023/01/26 10:59:04 by edecoste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ SRCS		=	push_swap_move_0.c \
 				push_swap_move_2.c \
 				push_swap_tools.c \
 				push_swap_tools_2.c \
+				push_swap_tools_3.c \
 				push_swap.c \
 				close.c \
 				stack.c \

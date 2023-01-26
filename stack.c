@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:25:49 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/23 18:18:32 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/01/26 11:17:01 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,10 @@ void	stack_show(t_stack *lst)
 int	init_stack_a(t_data	*data, int argc, char **argv)
 {
 	int		i;
-	t_stack	*new;
+
 	i = 0;
-	
 	while (++i < argc)
-	{
-		new = ft_stack_new(ft_atoi(argv[i]));
-		stack_add_back(&data->stack_a, new);
-	}
+		stack_add_back(&data->stack_a, ft_stack_new(ft_atoi(argv[i])));
 	data->size_a = i - 1;
 	return (0);
 }

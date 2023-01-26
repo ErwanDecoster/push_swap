@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:31:53 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/25 16:26:30 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/01/26 10:58:31 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,71 +50,6 @@ int	go_algo(t_data *data)
 	{
 		index_stack(data);
 		sort_max(data);
-	}
-	return (0);
-}
-
-int	index_stack(t_data *data)
-{
-	t_stack	*elem;
-	t_stack	*elem2;
-
-	elem = data->stack_a;
-	while (elem)
-	{
-		elem2 = data->stack_a;
-		elem->index = 0;
-		while (elem2)
-		{
-			if (elem2->content < elem->content)
-				elem->index++;
-			elem2 = elem2->next;
-		}
-		elem = elem->next;
-	}
-	return (0);
-}
-
-int	split_to_b(t_data *data, int len, int max_index, int min_index)
-{
-	int	direction;
-	int	med_index;
-
-	direction = 0;
-	med_index = (max_index + min_index) / 2;
-	while (data->stack_a && data->size_b < len)
-	{
-		if (data->stack_a->index < max_index && data->stack_a->index >= min_index)
-		{
-			move_pb(data);
-			if (data->stack_b->index < med_index)
-				move_rb(data);
-		}
-		else if (direction == 0)
-			move_ra(data);
-		else if (direction == 1)
-			move_rra(data);
-		if (data->stack_a->index > max_index)
-			direction = 1;
-	}
-	return (0);
-}
-
-int	sort_b(t_data *data, int len)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < len)
-	{
-		j = find_max_position(data->stack_b);
-		while (j <= data->size_b / 2 && j-- > 0)
-			move_rb(data);
-		while (j > data->size_b / 2 && j++ < data->size_b)
-			move_rrb(data);
-		move_pa(data);
-		i++;
 	}
 	return (0);
 }
