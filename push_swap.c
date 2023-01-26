@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:31:53 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/26 10:58:31 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/01/26 14:35:13 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,18 @@ int	main(int argc, char **argv)
 	if (argc == 2 && ft_strlen(argv[1]) > 1)
 	{
 		join = ft_strjoin("name ", argv[1]);
-		argv_cpy = ft_split(join, ' '); // Leak probable
+		argv_cpy = ft_split(join, ' ');
 		argc_cpy = count_word(join, ' ');
+		free(join);
 	}
 	check_args(argc_cpy, argv_cpy);
 	check_duplicate(argc_cpy, argv_cpy);
 	check_sort(argc_cpy, argv_cpy);
 	init_stack_a(&data, argc_cpy, argv_cpy);
-	// free(argv_cpy);
+	if (argc == 2 && ft_strlen(argv[1]) > 1)
+		free_tab(argc_cpy, argv_cpy);
 	go_algo(&data);
-	stop();
+	stop(&data);
 }
 
 int	go_algo(t_data *data)

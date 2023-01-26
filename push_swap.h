@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:13:09 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/26 11:23:37 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/01/26 14:07:58 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int		find_i_position(t_stack *stack, int index);//inused
 
 // -------------------------------------------------------- push_swap_tools_3 --
 
+int		free_tab(int len, char **tab);
 int		index_stack(t_data *data);
 int		split_to_b(t_data *data, int len, int max_i, int min_i);
 int		prepare_a(t_data *data, int len);
@@ -82,9 +83,10 @@ int		sort_b(t_data *data, int len);
 // -------------------------------------------------------------------- close --
 
 void	free_all(t_data *data);
+void	free_stack(t_stack *stack);
 int		error(void);
 int		close_prog(void);
-int		stop(void);
+int		stop(t_data *data);
 
 // -------------------------------------------------------------------- stack --
 

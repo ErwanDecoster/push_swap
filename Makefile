@@ -6,7 +6,7 @@
 #    By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/09 13:51:30 by edecoste          #+#    #+#              #
-#    Updated: 2023/01/26 10:59:04 by edecoste         ###   ########.fr        #
+#    Updated: 2023/01/26 15:05:17 by edecoste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,16 +33,16 @@ CC			= cc
 
 RM			= rm -f
 
-%.o: 		%.c ${HEADERS}	Makefile
+%.o: 		%.c ${HEADERS}
 			${CC} ${FLAGS} -c $< -o $@ -I ${HEADERS}
 
-${NAME}:	makelib ${OBJS}
+${NAME}:	${OBJS} Libft/libft.a
 			${CC} ${FLAGS} -o ${NAME} ${OBJS} Libft/libft.a
 
-all:		${NAME}
+all:		makelib ${NAME}
 
 makelib:
-			make bonus -C ./Libft/
+			make -C ./Libft/
 
 clean:
 			${RM} ${OBJS}

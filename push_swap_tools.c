@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:31:35 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/25 16:41:12 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/01/26 15:51:51 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int	check_args(int argc, char **argv)
 	int	i;
 
 	i = 0;
-// if (argc < 2)
-// 	return (error());
+	if (argc < 2)
+		return (error());
 	while (++i < argc)
 		if (!is_valid(argv[i]))
 			return (error());
@@ -49,7 +49,7 @@ int	check_sort(int argc, char **argv)
 	while (++i < argc - 1)
 		if (ft_atoi(argv[i]) > ft_atoi(argv[i + 1]))
 			return (1);
-	return (stop());
+	return (close_prog());
 }
 
 int	check_max_min(char *str)
@@ -61,16 +61,20 @@ int	check_max_min(char *str)
 
 int	is_valid(char *arg)
 {
-	int	i;
+	int		i;
+	size_t	len;
 
 	i = -1;
-	if (ft_strlen(arg) == 0)
+	len = ft_strlen(arg);
+	if (len == 0 || (arg[0] != '-' && len > 10) || (arg[0] == '-' && len > 11))
 		return (0);
 	if (!check_max_min(arg))
 		return (0);
 	while (arg[++i])
 	{
 		if (arg[i] == '-' && !ft_isdigit(arg[i + 1]))
+			return (0);
+		if (ft_isdigit(arg[i]) && arg[i + 1] == '-')
 			return (0);
 		if (!ft_isdigit(arg[i]) && arg[i] != '-')
 			return (0);

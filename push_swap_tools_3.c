@@ -6,11 +6,24 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:31:35 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/26 11:22:29 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/01/26 14:07:39 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	free_tab(int len, char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (i < len)
+	{
+		free(tab[i++]);
+	}
+	free(tab);
+	return (1);
+}
 
 int	index_stack(t_data *data)
 {
