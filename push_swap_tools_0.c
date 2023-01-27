@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_tools.c                                  :+:      :+:    :+:   */
+/*   push_swap_tools_0.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:31:35 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/26 15:51:51 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/01/27 10:03:40 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ int	is_valid(char *arg)
 
 	i = -1;
 	len = ft_strlen(arg);
-	if (len == 0 || (arg[0] != '-' && len > 10) || (arg[0] == '-' && len > 11))
+	if (len == 0 || (arg[0] != '-' && len > 10) || (arg[0] == '-' && len > 11) \
+		|| (arg[0] != '+' && len > 10) || (arg[0] == '+' && len > 11))
 		return (0);
 	if (!check_max_min(arg))
 		return (0);
@@ -74,9 +75,12 @@ int	is_valid(char *arg)
 	{
 		if (arg[i] == '-' && !ft_isdigit(arg[i + 1]))
 			return (0);
+		if (arg[i] == '+' && !ft_isdigit(arg[i + 1]))
+			return (0);
 		if (ft_isdigit(arg[i]) && arg[i + 1] == '-')
 			return (0);
-		if (!ft_isdigit(arg[i]) && arg[i] != '-')
+		if ((!ft_isdigit(arg[i]) && arg[i] != '-') \
+			&& (!ft_isdigit(arg[i]) && arg[i] != '+'))
 			return (0);
 	}
 	return (1);
