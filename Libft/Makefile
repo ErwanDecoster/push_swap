@@ -6,7 +6,7 @@
 #    By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/09 13:51:30 by edecoste          #+#    #+#              #
-#    Updated: 2023/01/18 11:58:25 by edecoste         ###   ########.fr        #
+#    Updated: 2023/02/03 14:41:44 by edecoste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,8 +77,8 @@ AR			= ar rc
 
 RM			= rm -f
 
-%.o: %.c ${HEADERS}	Makefile
-			${CC} ${FLAGS} -c $< -o $@ -I ${HEADERS}
+%.o:		%.c ${HEADERS}	Makefile
+			${CC} ${FLAGS} -c $<
 
 ${NAME}:	${OBJS}
 			${AR} ${NAME} ${OBJS}

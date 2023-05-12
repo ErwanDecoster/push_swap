@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:24:40 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/26 16:02:35 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/01/27 13:00:36 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	free_stack(t_stack *stack)
 	}
 }
 
-int	error(void)
+int	error(char *str)
 {
-	write(2, "Error\n", 6);
+	write(2, str, ft_strlen(str));
 	exit(1);
 }
 

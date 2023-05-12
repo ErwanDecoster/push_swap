@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 13:36:58 by edecoste          #+#    #+#             */
-/*   Updated: 2022/11/24 11:03:25 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/02/02 15:33:39 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	char	*var;
 
-	if (size && count > SIZE_MAX / size)
+	if (size && count > 2147483647 / size)
 		return (0);
 	var = malloc(count * size);
 	if (!var)

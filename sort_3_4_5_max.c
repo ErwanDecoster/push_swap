@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 13:41:28 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/26 11:17:45 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/01/27 13:29:58 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	sort_max(t_data *data)
 	int	chunck;
 	int	sup;
 
-	nb_chunck = data->size_a / 90 + 1;
+	nb_chunck = data->size_a / 45 + 1;
 	if (data->size_a > 400)
 		nb_chunck = data->size_a / 90 + 1;
 	i = nb_chunck;

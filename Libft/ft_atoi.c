@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 17:16:37 by edecoste          #+#    #+#             */
-/*   Updated: 2022/11/23 14:31:38 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/02/02 15:18:18 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	check_pos_neg(const char *str, int *i)
 
 static void	ft_skipws(const char *str, int *i)
 {
-	while (str[*(i)] > 8 & str[*(i)] < 14 || str[*(i)] == ' ')
+	while ((str[*(i)] > 8) && (str[*(i)] < 14 || str[*(i)] == ' '))
 		(*i)++;
 }
 

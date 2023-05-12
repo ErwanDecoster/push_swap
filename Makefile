@@ -6,7 +6,7 @@
 #    By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/09 13:51:30 by edecoste          #+#    #+#              #
-#    Updated: 2023/01/26 16:31:13 by edecoste         ###   ########.fr        #
+#    Updated: 2023/05/11 15:56:47 by edecoste         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ LIBFT		= Libft/libft.a
 
 OBJS		= ${SRCS:.c=.o}
 
-FLAGS		= -Wall -Wextra -Werror
+DFLAGS		= -fsanitize=address -g3
+FLAGS		= -Wall -Wextra -Werror #$(DFLAGS)
 
 NAME		= push_swap
 
@@ -42,7 +43,7 @@ ${NAME}:	${OBJS}
 
 all:		${LIBFT} ${NAME}
 
-${LIBFT}:
+${LIBFT}:	FORCE
 			make -C ./Libft/
 
 clean:
@@ -55,4 +56,6 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY: 	all clean fclean re makelib
+FORCE:
+
+.PHONY: 	all clean fclean re makelib FORCE

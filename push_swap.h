@@ -6,7 +6,7 @@
 /*   By: edecoste <edecoste@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:13:09 by edecoste          #+#    #+#             */
-/*   Updated: 2023/01/26 16:30:11 by edecoste         ###   ########.fr       */
+/*   Updated: 2023/02/02 20:32:55 by edecoste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_data
 // ---------------------------------------------------------------- push_swap --
 
 int		go_algo(t_data *data);
+char	**restruct_arg_input(char **argv_cpy);
 
 // --------------------------------------------------------- push_swap_move_0 --
 
@@ -76,14 +77,14 @@ int		sort_b(t_data *data, int len);
 
 void	free_all(t_data *data);
 void	free_stack(t_stack *stack);
-int		error(void);
+int		error(char *str);
 int		close_prog(void);
 int		stop(t_data *data);
 
 // -------------------------------------------------------------------- stack --
 
 t_stack	*ft_stack_new(int content);
-void	stack_add_back(t_stack **lst, t_stack *new);
+void	stack_add_back(t_stack **stack, t_stack *add_new);
 int		init_stack_a(t_data	*data, int argc, char **argv);
 
 // ----------------------------------------------------------- sort_3_4_5_max --
